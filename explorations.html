@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Molto — explorations</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Aeonik";src:local("Aeonik"),local("Aeonik-Regular"),url("fonts/Aeonik-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Aeonik";src:local("Aeonik Medium"),local("Aeonik-Medium"),url("fonts/Aeonik-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+html,body{margin:0;background:#fff;color:#632424;font-family:"Aeonik","Schibsted Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+
+a{color:#632424;text-decoration:none}
+a:hover{color:#F94E19}
+footer a{color:#157670}
+footer a:hover{color:#fff}
+button{font:inherit;color:inherit}
+@media (max-width:640px){[data-mw]{width:100%!important;left:0!important;right:0!important}molto-canvas [data-sw]{left:20px!important}molto-canvas [data-ctl]{right:20px!important}}
+</style>
+<script src="./smooth-scroll.js"></script>
+</helmet>
+<div>
+<div style="position:relative;z-index:1;background:#fff;min-height:100vh;padding-bottom:clamp(60px,6vw,140px)">
+<div data-mw style="width:85%;margin:0 auto">
+  <header style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 20px;padding:15px 20px 0">
+    <a href="index.html" style="font-size:clamp(32px,3.5vw,44px);font-weight:500;letter-spacing:-0.04em;line-height:1">Molto</a>
+    <nav style="display:flex;justify-content:flex-end;gap:clamp(16px,2vw,48px);flex-wrap:wrap;font-size:clamp(22px,2.9vw,36px);letter-spacing:-0.02em;line-height:1;padding-top:10px">
+      <a href="info.html">info</a>
+    </nav>
+  </header>
+
+  <section style="padding:clamp(80px,11vw,240px) 20px 0;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <p style="margin:0;max-width:22ch;font-size:clamp(30px,4.6vw,104px);line-height:1.04;letter-spacing:-0.035em;text-wrap:pretty">Things we make, find and keep.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="3">
+        <button onClick="{{ f.pick }}" style="padding:0.5em 1.1em;border-radius:999px;border:1.5px solid #632424;background:{{ f.bg }};color:{{ f.fg }};cursor:pointer;font-size:clamp(14px,1.1vw,24px)">{{ f.label }} <span style="opacity:0.6">{{ f.count }}</span></button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(40px,5vw,100px) 20px 0">
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:0;font-size:clamp(16px,1.3vw,30px)">No {{ filterName }} yet.</p>
+    </sc-if>
+    <div style="column-count:{{ cols }};column-gap:clamp(16px,2vw,40px)">
+      <sc-for list="{{ shown }}" as="it" hint-placeholder-count="6">
+        <figure onClick="{{ it.open }}" style="margin:0 0 clamp(16px,2vw,40px);break-inside:avoid;cursor:zoom-in">
+          <img src="{{ it.src }}" alt="{{ it.title }}" loading="lazy" style="display:block;width:100%;height:auto;background:#f3eee9;border-radius:12px">
+          <figcaption style="display:flex;justify-content:space-between;gap:12px;padding-top:10px;font-size:clamp(13px,0.95vw,22px);line-height:1.2">
+            <span>{{ it.title }}</span>
+            <span style="color:#F94E19">{{ it.kind }}</span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</div>
+<footer style="position:sticky;bottom:0;z-index:0;height:100vh;min-height:560px;background:#ffbbfc;color:#157670;display:flex;flex-direction:column;overflow:hidden">
+  <div style="position:relative;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(16px,2vw,40px);text-align:center;padding:clamp(32px,4vw,72px) 20px 0">
+    <div style="font-size:min(30vw,40vh);font-weight:500;letter-spacing:-0.03em;line-height:0.8;white-space:nowrap">Molto</div>
+    <div style="font-size:clamp(20px,1.9vw,40px);letter-spacing:-0.02em;line-height:1.1">Mon–Fri, 10–18<svg width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.08em;margin:0 0.3em"><path d="M4 20l1-4.5L16 4.5a2.1 2.1 0 0 1 3 3L8 18.5z"></path><path d="M14.5 6l3.5 3.5"></path></svg>Visits by appointment<br>via Malachia, 3 – 20146 Milano</div>
+    <a href="mailto:studio@molto.work" style="margin-top:clamp(12px,1.5vw,32px);font-size:clamp(20px,1.9vw,40px);letter-spacing:-0.02em;line-height:1.1">studio@molto.work</a>
+  </div>
+  <div data-mw style="width:85%;margin:0 auto;padding:0 20px 15px;flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:center;font-size:clamp(12px,0.9vw,20px)">
+    <span style="display:flex;align-items:center;gap:0.45em"><svg width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M2.5 12h19"></path><path d="M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5c-2.6-2.7-3.9-5.9-3.9-9.5s1.3-6.8 3.9-9.5z"></path></svg>Milano, Italy</span>
+    <span style="text-align:center">©2026 Molto. All rights reserved.</span>
+    <a href="https://www.instagram.com/molto.work/" target="_blank" rel="noopener" style="justify-self:end">@molto</a>
+  </div>
+</footer>
+
+<sc-if value="{{ lightbox }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:10;background:#F94E19;display:flex;flex-direction:column;padding:clamp(16px,2vw,40px)">
+    <div style="display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:clamp(16px,1.3vw,30px)">
+      <span>{{ current.title }} <span style="opacity:0.75">· {{ current.kind }}</span></span>
+      <span style="display:flex;gap:24px;align-items:center"><span>{{ position }}</span><button onClick="{{ close }}" style="background:#fff;color:#F94E19;border:0;border-radius:999px;padding:0.4em 1em;cursor:pointer">close</button></span>
+    </div>
+    <div style="flex:1;min-height:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:clamp(16px,2vw,40px) 0">
+      <button onClick="{{ prev }}" aria-label="Previous" style="flex:none;width:clamp(44px,3.5vw,72px);height:clamp(44px,3.5vw,72px);border-radius:50%;border:0;background:#fff;color:#F94E19;cursor:pointer;font-size:clamp(18px,1.5vw,30px)">←</button>
+      <img src="{{ current.src }}" alt="{{ current.title }}" onClick="{{ stop }}" style="max-width:100%;max-height:100%;min-width:0;object-fit:contain;display:block;margin:0 auto;border-radius:12px">
+      <button onClick="{{ next }}" aria-label="Next" style="flex:none;width:clamp(44px,3.5vw,72px);height:clamp(44px,3.5vw,72px);border-radius:50%;border:0;background:#fff;color:#F94E19;cursor:pointer;font-size:clamp(18px,1.5vw,30px)">→</button>
+    </div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tumblrBlog&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+// To add work: put the file in assets/ and add a line here. kind: "photo" or "drawing".
+const ITEMS = [
+  { src: 'assets/tunnel.jpg', title: 'Tunnel', kind: 'drawing' },
+  { src: 'assets/gal_1.jpg', title: 'Moving day', kind: 'photo' },
+  { src: 'assets/gal_2.jpg', title: 'Shelves and easel', kind: 'photo' },
+  { src: 'assets/studio_02.jpg', title: 'Hanging a painting', kind: 'photo' },
+  { src: 'assets/gal_3.jpg', title: 'Reading corner', kind: 'photo' },
+  { src: 'assets/gal_4.jpg', title: 'Bookshelf', kind: 'photo' },
+  { src: 'assets/gal_5.jpg', title: 'Through the portfolio', kind: 'photo' },
+  { src: 'assets/studio_03.jpg', title: 'At the table', kind: 'photo' },
+];
+const FILTERS = [['all', 'All'], ['photo', 'Photos'], ['drawing', 'Drawings']];
+class Component extends DCLogic {
+  state = { filter: 'all', open: -1, w: window.innerWidth, remote: null };
+  loadTumblr() {
+    const blog = (this.props.tumblrBlog || '').trim().replace(/^https?:\/\//, '').replace(/\.tumblr\.com.*$/, '').replace(/\/.*$/, '');
+    if (!blog || blog === this._blog) return;
+    this._blog = blog;
+    const s = document.createElement('script');
+    s.src = 'https://' + blog + '.tumblr.com/api/read/json?num=50&_=' + Date.now();
+    s.onload = () => {
+      const d = window.tumblr_api_read; if (!d || !d.posts) return;
+      const strip = h => { const t = document.createElement('div'); t.innerHTML = h || ''; return t.textContent.trim(); };
+      const items = [];
+      d.posts.forEach(p => {
+        const tags = (p.tags || []).map(t => t.toLowerCase());
+        const kind = tags.includes('drawing') || tags.includes('drawings') ? 'drawing' : 'photo';
+        const title = strip(p['photo-caption']).split('\n')[0].slice(0, 60) || (p.slug || '').replace(/-/g, ' ');
+        let photos = p.photos && p.photos.length ? p.photos.map(x => x['photo-url-1280']) : [p['photo-url-1280']];
+        if (p.type === 'regular') {
+          const t = document.createElement('div'); t.innerHTML = p['regular-body'] || '';
+          photos = [...t.querySelectorAll('img')].map(im => {
+            const ss = (im.getAttribute('srcset') || '').split(',').map(x => x.trim().split(/\s+/)).filter(x => x[0]);
+            ss.sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
+            return ss.length ? ss[0][0] : im.getAttribute('src');
+          });
+          const cap = strip(p['regular-title']) || t.textContent.trim().split('\n')[0].slice(0, 60);
+          photos.filter(Boolean).forEach(src => items.push({ src, title: cap || title, kind }));
+          return;
+        }
+        photos.filter(Boolean).forEach(src => items.push({ src, title, kind }));
+      });
+      this.setState({ remote: items });
+    };
+    s.onerror = () => this.setState({ remote: null });
+    document.head.appendChild(s);
+  }
+  componentDidUpdate() { this.loadTumblr(); }
+  componentDidMount() {
+    this.loadTumblr();
+    this.onKey = e => {
+      if (this.state.open < 0) return;
+      if (e.key === 'Escape') this.setState({ open: -1 });
+      if (e.key === 'ArrowRight') this.step(1);
+      if (e.key === 'ArrowLeft') this.step(-1);
+    };
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('keydown', this.onKey);
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); window.removeEventListener('resize', this.onResize); }
+  all() { return this.state.remote && this.state.remote.length ? this.state.remote : ITEMS; }
+  list() { const a = this.all(); return this.state.filter === 'all' ? a : a.filter(i => i.kind === this.state.filter); }
+  step(d) { const n = this.list().length; this.setState(s => ({ open: (s.open + d + n) % n })); }
+  renderVals() {
+    const { filter, open, w } = this.state, list = this.list();
+    const cur = list[open] || {};
+    return {
+      filters: FILTERS.map(([k, label]) => ({
+        label, count: k === 'all' ? this.all().length : this.all().filter(i => i.kind === k).length,
+        bg: filter === k ? '#632424' : 'transparent', fg: filter === k ? '#fff' : '#632424',
+        pick: () => this.setState({ filter: k, open: -1 }),
+      })),
+      shown: list.map((it, i) => ({ ...it, open: () => this.setState({ open: i }) })),
+      empty: list.length === 0,
+      filterName: (FILTERS.find(f => f[0] === filter) || [])[1]?.toLowerCase(),
+      cols: w < 640 ? 1 : w < 1000 ? 2 : 3,
+      lightbox: open >= 0,
+      current: cur,
+      position: (open + 1) + ' / ' + list.length,
+      close: () => this.setState({ open: -1 }),
+      stop: e => e.stopPropagation(),
+      prev: e => { e.stopPropagation(); this.step(-1); },
+      next: e => { e.stopPropagation(); this.step(1); },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Molto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Aeonik";src:local("Aeonik"),local("Aeonik-Regular"),url("fonts/Aeonik-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Aeonik";src:local("Aeonik Medium"),local("Aeonik-Medium"),url("fonts/Aeonik-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+html,body{margin:0;background:#fff;color:#632424;font-family:"Aeonik","Schibsted Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+
+a{color:#632424;text-decoration:none}
+a:hover{color:#111}
+footer a{color:#157670}
+footer a:hover{color:#fff}
+header a:hover{color:#fff}
+@media (max-width:640px){[data-mw]{width:100%!important;left:0!important;right:0!important}molto-canvas [data-sw]{left:20px!important}molto-canvas [data-ctl]{right:20px!important}[data-hero]{height:70vh!important;height:70svh!important}}
+</style>
+<script src="./smooth-scroll.js"></script>
+</helmet>
+<div>
+<div style="position:relative;z-index:1;background:#fff">
+<div data-hero="" style="height:100vh;position:relative">
+  <div data-mw="" style="position:absolute;top:0;left:7.5%;right:7.5%;z-index:2;pointer-events:none">
+    <header style="pointer-events:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 20px;padding:15px 20px 0">
+      <a href="index.html" style="font-size:clamp(32px,3.5vw,44px);font-weight:500;letter-spacing:-0.04em;line-height:1">Molto</a>
+      <nav style="display:flex;justify-content:flex-end;gap:clamp(16px,2vw,48px);flex-wrap:wrap;font-size:clamp(22px,2.9vw,36px);letter-spacing:-0.02em;line-height:1;padding-top:10px">
+        <a href="info.html">info</a>
+      </nav>
+    </header>
+  </div>
+  <div style="position:absolute;inset:0">
+    <x-import component-from-global-scope="molto-canvas" from="./draw.js" fill="" random="5" controls-inset="calc(7.5% + 20px)" stroke="{{ stroke }}" grid="{{ grid }}" style="width:100%;height:100%" hint-size="100%,100%"></x-import>
+  </div>
+</div>
+<div data-mw="" style="width:85%;margin:0 auto;padding:clamp(40px,5vw,120px) 20px"><p ref="{{ stems }}" style="margin:0 0 clamp(40px,5vw,120px);color:#F94E19;font-size:clamp(30px,4.6vw,104px);line-height:1.04;letter-spacing:-0.035em;font-weight:400;text-wrap:pretty">Molto is the space where we work, explore and collect books on art and design.</p>
+<div ref="{{ gal }}" style="display:flex;flex-direction:column;gap:clamp(8px,1vw,24px);padding:clamp(16px,2vw,48px) 0 clamp(100px,12vw,280px)">
+<div style="display:flex;justify-content:space-between;align-items:flex-start">
+  <div data-speed="-0.1" style="width:29%;margin-top:0%;will-change:transform"><img src="assets/gal_1.jpg" alt="Moving a painting in the studio" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px"></div>
+  <div data-speed="0.12" style="position:relative;width:33%;margin-top:14%;will-change:transform"><img data-speed="-0.06" data-spin="0.25" src="assets/M_01.svg" alt="" aria-hidden="true" style="position: absolute; left: -56px; width: 30.4%; height: auto; z-index: 2; pointer-events: none; top: 291px"><img src="assets/gal_2.jpg" alt="Paintings on the shelves and an easel" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px"></div>
+  <div data-speed="-0.06" style="position:relative;width:30%;margin-top:4%;will-change:transform"><img src="assets/gal_3.jpg" alt="Reading corner with sofa and bookshelf" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px"></div>
+</div>
+<div style="display:flex;justify-content:space-around;align-items:flex-start;margin-top:-4%">
+  <div data-speed="0.08" style="width:31%;margin-top:0%;will-change:transform"><img src="assets/gal_4.jpg" alt="Bookshelf with toys and a hanging plant" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px"><img data-speed="0.06" src="assets/checker.svg" alt="" aria-hidden="true" style="display:block;width:120%;height:auto;margin:clamp(24px,3vw,64px) 0 0 -30%;pointer-events:none"></div>
+  <div data-speed="-0.12" style="position:relative;width:34%;margin-top:10%;will-change:transform"><div data-speed="0.05" aria-hidden="true" style="position:absolute;left:-12%;top:-12%;width:40%;aspect-ratio:1;background:#632424;z-index:0;pointer-events:none"></div><img src="assets/gal_5.jpg" alt="Looking through a portfolio at the studio table" loading="lazy" style="position:relative;z-index:1;display:block;width:100%;height:auto;border-radius:12px"></div>
+</div>
+</div>
+<section style="padding:0 0 clamp(20px,3vw,60px)">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-bottom:clamp(20px,2.5vw,48px)">
+    <h2 style="margin:0;font-weight:400;font-size:clamp(30px,4.6vw,104px);line-height:1.04;letter-spacing:-0.035em">Notes from the studio</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(24px,3vw,64px);padding-top:clamp(20px,2vw,40px)">
+    <article style="display:flex;flex-direction:column;gap:clamp(8px,0.8vw,16px)">
+      <span style="font-size:clamp(13px,0.95vw,20px);color:#F94E19">September 2026</span>
+      <h3 style="margin:0;font-weight:400;font-size:clamp(22px,2.2vw,48px);line-height:1.05;letter-spacing:-0.025em">A new wall</h3>
+      <p style="margin:0;font-size:clamp(15px,1.15vw,24px);line-height:1.3;max-width:28em;text-wrap:pretty">We moved the big paintings to the north wall. The room feels twice as wide and the afternoon light finally reaches the table.</p>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:clamp(8px,0.8vw,16px)">
+      <span style="font-size:clamp(13px,0.95vw,20px);color:#F94E19">August 2026</span>
+      <h3 style="margin:0;font-weight:400;font-size:clamp(22px,2.2vw,48px);line-height:1.05;letter-spacing:-0.025em">Forty kilos of books</h3>
+      <p style="margin:0;font-size:clamp(15px,1.15vw,24px);line-height:1.3;max-width:28em;text-wrap:pretty">A friend closed her shop and left us her art and design section. We are still sorting it, one shelf at a time.</p>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:clamp(8px,0.8vw,16px)">
+      <span style="font-size:clamp(13px,0.95vw,20px);color:#F94E19">April 2026</span>
+      <h3 style="margin:0;font-weight:400;font-size:clamp(22px,2.2vw,48px);line-height:1.05;letter-spacing:-0.025em">RITMO Workshop</h3>
+      <p style="margin:0;font-size:clamp(15px,1.15vw,24px);line-height:1.3;max-width:28em;text-wrap:pretty">We hosted a drawing workshop called "RITMO" in Barcelona, with our friends Seba Curi and Macarena Luzi. It was fun!</p>
+    </article>
+  </div>
+</section>
+</div>
+</div>
+</div>
+<footer style="position:sticky;bottom:0;z-index:0;height:100vh;min-height:560px;background:#ffbbfc;color:#157670;display:flex;flex-direction:column;overflow:hidden">
+  <div style="position:relative;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(16px,2vw,40px);text-align:center;padding:clamp(32px,4vw,72px) 20px 0">
+    <div style="font-size:min(30vw,40vh);font-weight:500;letter-spacing:-0.03em;line-height:0.8;white-space:nowrap">Molto</div>
+    <div style="font-size:clamp(20px,1.9vw,40px);letter-spacing:-0.02em;line-height:1.1">Mon–Fri, 10–18<svg width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-0.08em;margin:0 0.3em"><path d="M4 20l1-4.5L16 4.5a2.1 2.1 0 0 1 3 3L8 18.5z"></path><path d="M14.5 6l3.5 3.5"></path></svg>Visits by appointment<br>via Malachia, 3 – 20146 Milano</div>
+    <a href="mailto:studio@molto.work" style="margin-top:clamp(12px,1.5vw,32px);font-size:clamp(20px,1.9vw,40px);letter-spacing:-0.02em;line-height:1.1">studio@molto.work</a>
+  </div>
+  <div data-mw="" style="width:85%;margin:0 auto;padding:0 20px 15px;flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:center;font-size:clamp(12px,0.9vw,20px)">
+    <span style="display:flex;align-items:center;gap:0.45em"><svg width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M2.5 12h19"></path><path d="M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5c-2.6-2.7-3.9-5.9-3.9-9.5s1.3-6.8 3.9-9.5z"></path></svg>Milano, Italy</span>
+    <span style="text-align:center">©2026 Molto. All rights reserved.</span>
+    <a href="https://www.instagram.com/molto.work/" target="_blank" rel="noopener" style="justify-self:end">@molto</a>
+  </div>
+</footer>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;strokeWidth&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:2.5,&quot;min&quot;:0.5,&quot;max&quot;:8,&quot;step&quot;:0.5,&quot;unit&quot;:&quot;% of width&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;dotGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  gal = React.createRef(); stems = React.createRef();
+  componentDidMount() {
+    this.animateStems();
+    this.onScroll = () => {
+      const vh = window.innerHeight, root = this.gal.current; if (!root) return;
+      root.querySelectorAll('[data-speed]').forEach(el => {
+        const s = parseFloat(el.dataset.speed), b = el.getBoundingClientRect(), base = b.top - (el._ty || 0) + b.height / 2;
+        el._ty = (base - vh / 2) * s;
+        const spin = el.dataset.spin ? ' rotate(' + (window.scrollY * parseFloat(el.dataset.spin)).toFixed(1) + 'deg)' : '';
+        el.style.transform = 'translateY(' + el._ty.toFixed(1) + 'px)' + spin;
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  animateStems() {
+    const p = this.stems.current; if (!p || p.dataset.split) return;
+    p.dataset.split = '1';
+    const words = p.textContent.trim().split(/\s+/);
+    p.textContent = '';
+    const N = 4, cut = Math.max(0, words.length - N);
+    p.appendChild(document.createTextNode(words.slice(0, cut).join(' ') + ' '));
+    const spans = words.slice(cut).map((w, i, a) => {
+      const s = document.createElement('span');
+      s.textContent = w; s.style.display = 'inline-block'; s.style.opacity = '0'; s.style.transform = 'translateY(0.35em)';
+      p.appendChild(s); if (i < a.length - 1) p.appendChild(document.createTextNode(' '));
+      return s;
+    });
+    this.io = new IntersectionObserver(es => {
+      if (!es.some(e => e.isIntersecting)) return;
+      this.io.disconnect();
+      spans.forEach((s, i) => s.animate(
+        [{ opacity: 0, transform: 'translateY(0.35em)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 500, delay: 250 + i * 140, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }));
+    }, { threshold: 0.35 });
+    this.io.observe(p);
+  }
+  componentWillUnmount() {
+    this.io && this.io.disconnect(); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); }
+  renderVals() {
+    return { gal: this.gal, stems: this.stems, stroke: String(this.props.strokeWidth ?? 2.5), grid: String(this.props.dotGrid ?? false) };
+  }
+}
+</script>
+</body>
+</html>
